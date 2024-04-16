@@ -1,0 +1,101 @@
+[gd_scene load_steps=13 format=3 uid="uid://dvq2xkvh2ckby"]
+
+[ext_resource type="Texture2D" uid="uid://dbkiuqo05l51j" path="res://ressources/art/shadow.png" id="1_5hwdh"]
+[ext_resource type="Script" path="res://necromancer.gd" id="1_b4el0"]
+[ext_resource type="Texture2D" uid="uid://mqw1muqmchky" path="res://ressources/art/necromancer.png" id="4_yeu1s"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kku7j"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_5hwdh")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_idimi"]
+atlas = ExtResource("4_yeu1s")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_prbjm"]
+atlas = ExtResource("4_yeu1s")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tq48j"]
+atlas = ExtResource("4_yeu1s")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ns2ib"]
+atlas = ExtResource("4_yeu1s")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5i7sa"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_idimi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_prbjm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tq48j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ns2ib")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_yy6qg"]
+radius = 5.0
+height = 24.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w78uw"]
+size = Vector2(23, 38)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ybbv6"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 1, 1, 1)
+
+[node name="necromancer" type="CharacterBody2D" groups=["player", "unit"]]
+safe_margin = 10.0
+script = ExtResource("1_b4el0")
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, 15)
+sprite_frames = SubResource("SpriteFrames_kku7j")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(1, -1)
+sprite_frames = SubResource("SpriteFrames_5i7sa")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, 14)
+rotation = -1.5708
+shape = SubResource("CapsuleShape2D_yy6qg")
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(-17, -19)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(16.5, 19)
+shape = SubResource("RectangleShape2D_w78uw")
+
+[node name="box" type="Panel" parent="."]
+offset_left = -17.0
+offset_top = -19.0
+offset_right = 17.0
+offset_bottom = 19.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_ybbv6")
+metadata/_edit_use_anchors_ = true
+
+[connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]

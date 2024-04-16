@@ -1,0 +1,50 @@
+[gd_scene load_steps=8 format=3 uid="uid://bh61uyt2wijk2"]
+
+[ext_resource type="Script" path="res://summoning.gd" id="1_medtj"]
+[ext_resource type="Texture2D" uid="uid://bufe5xa478nvo" path="res://ressources/art/pentagram-Sheet.png" id="2_vaj8h"]
+[ext_resource type="AudioStream" uid="uid://c585d3bqlm14j" path="res://ressources/sound/summoning.wav" id="3_yas4t"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ql4v8"]
+atlas = ExtResource("2_vaj8h")
+region = Rect2(0, 0, 70, 38)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kyv6x"]
+atlas = ExtResource("2_vaj8h")
+region = Rect2(70, 0, 70, 38)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_u2cgn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ql4v8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kyv6x")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5bjwc"]
+radius = 25.5
+height = 86.0
+
+[node name="summoning" type="Area2D" groups=["summon"]]
+script = ExtResource("1_medtj")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_u2cgn")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_5bjwc")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+modulate = Color(1, 1, 1, 0)
+stream = ExtResource("3_yas4t")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 10.0
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

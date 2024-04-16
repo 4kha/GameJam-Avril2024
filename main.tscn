@@ -1,0 +1,153 @@
+[gd_scene load_steps=15 format=3 uid="uid://bw30wbhkpria1"]
+
+[ext_resource type="PackedScene" uid="uid://cm714m1wacaja" path="res://UI.tscn" id="1_5ug67"]
+[ext_resource type="Script" path="res://main.gd" id="1_r7h6j"]
+[ext_resource type="Texture2D" uid="uid://cy8ochoyi4lcl" path="res://ressources/art/Fond.png" id="2_8mhsi"]
+[ext_resource type="FontFile" uid="uid://5348kmef3b1g" path="res://ressources/art/8-BIT WONDER.TTF" id="2_sqvml"]
+[ext_resource type="PackedScene" uid="uid://sthynnldqaj8" path="res://house.tscn" id="3_2cr4j"]
+[ext_resource type="PackedScene" uid="uid://ckyetvwgn5pjw" path="res://upgrade.tscn" id="3_18s1s"]
+[ext_resource type="PackedScene" uid="uid://c82voj82078sg" path="res://squeleton.tscn" id="3_djq77"]
+[ext_resource type="PackedScene" uid="uid://dvq2xkvh2ckby" path="res://necromancer.tscn" id="4_rrsxq"]
+[ext_resource type="AudioStream" uid="uid://bm4766ln1db0m" path="res://ressources/sound/send.wav" id="7_f3re3"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_oxave"]
+normal = Vector2(0, 1)
+distance = 114.09
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_2r68b"]
+distance = -478.5
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2hbpq"]
+size = Vector2(89156, 9579)
+
+[sub_resource type="Animation" id="Animation_3vlj7"]
+resource_name = "fade"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("fade:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ritaj"]
+_data = {
+"fade": SubResource("Animation_3vlj7")
+}
+
+[node name="main" type="Node2D"]
+script = ExtResource("1_r7h6j")
+metadata/_edit_horizontal_guides_ = [-496.0]
+
+[node name="Intro" type="Label" parent="."]
+offset_left = 108.0
+offset_top = 163.0
+offset_right = 644.0
+offset_bottom = 369.0
+theme_override_fonts/font = ExtResource("2_sqvml")
+text = "Run from the inquisition
+
+
+
+
+
+
+
+
+
+Slow them down by sending skeletons"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Timer" type="Timer" parent="Intro"]
+wait_time = 5.0
+one_shot = true
+
+[node name="Upgrade" parent="." instance=ExtResource("3_18s1s")]
+process_priority = 2
+offset = Vector2(0, -470)
+transform = Transform2D(1, 0, 0, 1, 0, -470)
+
+[node name="fade" type="Polygon2D" parent="."]
+modulate = Color(1, 1, 1, 0)
+z_index = 2000
+position = Vector2(-110, 11)
+polygon = PackedVector2Array(-203, -212, -200, 719, 1215, 717, 1215, -228)
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+modulate = Color(1, 1, 1, 0.25098)
+z_index = 3000
+position = Vector2(-24, 13)
+color = Color(0.984314, 0.960784, 0.937255, 0.45098)
+polygon = PackedVector2Array(1032, -75, 1034, 507, 3268, 596, 3339, -218)
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_mirroring = Vector2(1170, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2(305, -1)
+texture = ExtResource("2_8mhsi")
+
+[node name="UI" parent="." instance=ExtResource("1_5ug67")]
+
+[node name="Houses" type="Node2D" parent="."]
+
+[node name="house" parent="Houses" instance=ExtResource("3_2cr4j")]
+position = Vector2(334, 216)
+
+[node name="Units" type="Node2D" parent="."]
+
+[node name="necromancer" parent="Units" instance=ExtResource("4_rrsxq")]
+position = Vector2(364, 321)
+
+[node name="Node2D" type="Node2D" parent="Units/necromancer"]
+
+[node name="unit4" parent="Units" instance=ExtResource("3_djq77")]
+position = Vector2(302, 240)
+beginning = true
+
+[node name="unit3" parent="Units" instance=ExtResource("3_djq77")]
+position = Vector2(395, 240)
+beginning = true
+
+[node name="unit2" parent="Units" instance=ExtResource("3_djq77")]
+position = Vector2(395, 263)
+beginning = true
+
+[node name="unit" parent="Units" instance=ExtResource("3_djq77")]
+position = Vector2(302, 263)
+beginning = true
+
+[node name="Sent" type="AudioStreamPlayer2D" parent="Units"]
+stream = ExtResource("7_f3re3")
+
+[node name="Out" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Out"]
+shape = SubResource("WorldBoundaryShape2D_oxave")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Out"]
+shape = SubResource("WorldBoundaryShape2D_2r68b")
+
+[node name="playArea" type="Area2D" parent="."]
+
+[node name="area" type="CollisionShape2D" parent="playArea"]
+visible = false
+position = Vector2(-43577, -245.5)
+shape = SubResource("RectangleShape2D_2hbpq")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_ritaj")
+}
+
+[connection signal="timeout" from="Intro/Timer" to="." method="_on_timer_timeout"]
+[connection signal="body_exited" from="playArea" to="." method="_on_play_area_body_exited"]

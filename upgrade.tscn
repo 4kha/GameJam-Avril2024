@@ -1,0 +1,295 @@
+[gd_scene load_steps=26 format=3 uid="uid://ckyetvwgn5pjw"]
+
+[ext_resource type="Script" path="res://upgrade.gd" id="1_jpotb"]
+[ext_resource type="Texture2D" uid="uid://bqr13dnrfhxqa" path="res://ressources/art/image (21).png" id="2_3pe1v"]
+[ext_resource type="Texture2D" uid="uid://bs3fbbk4tqrig" path="res://ressources/art/image (20).png" id="3_ddw8h"]
+[ext_resource type="FontFile" uid="uid://5348kmef3b1g" path="res://ressources/art/8-BIT WONDER.TTF" id="4_dey34"]
+[ext_resource type="Texture2D" uid="uid://j0eww0qcugt8" path="res://ressources/sound/spritesheet.png" id="5_0soqk"]
+[ext_resource type="AudioStream" uid="uid://6qkyt1vcn8y1" path="res://ressources/sound/click.wav" id="6_mgfo3"]
+[ext_resource type="AudioStream" uid="uid://cbbpssqryc13h" path="res://ressources/sound/master_final_dernier_ultimate_9.wav" id="7_pyopj"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_yn5sp"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hdbbt"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_804wc"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_mxe8v"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_845d2"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x33ib"]
+atlas = ExtResource("5_0soqk")
+region = Rect2(0, 0, 70, 70)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xv0av"]
+atlas = ExtResource("5_0soqk")
+region = Rect2(70, 0, 70, 70)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_trnnl"]
+atlas = ExtResource("5_0soqk")
+region = Rect2(140, 0, 70, 70)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vgj7e"]
+atlas = ExtResource("5_0soqk")
+region = Rect2(210, 0, 70, 70)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_um7es"]
+atlas = ExtResource("5_0soqk")
+region = Rect2(280, 0, 70, 70)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f5k4a"]
+atlas = ExtResource("5_0soqk")
+region = Rect2(350, 0, 70, 70)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uq3j6"]
+atlas = ExtResource("5_0soqk")
+region = Rect2(420, 0, 70, 70)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0meig"]
+atlas = ExtResource("5_0soqk")
+region = Rect2(490, 0, 70, 70)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u4aoa"]
+atlas = ExtResource("5_0soqk")
+region = Rect2(560, 0, 70, 70)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e0lud"]
+atlas = ExtResource("5_0soqk")
+region = Rect2(630, 0, 70, 70)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bp13i"]
+atlas = ExtResource("5_0soqk")
+region = Rect2(700, 0, 70, 70)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fmphh"]
+atlas = ExtResource("5_0soqk")
+region = Rect2(770, 0, 70, 70)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_he6jx"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x33ib")
+}],
+"loop": true,
+"name": &"1",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xv0av")
+}],
+"loop": true,
+"name": &"10",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_trnnl")
+}],
+"loop": true,
+"name": &"11",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vgj7e")
+}],
+"loop": true,
+"name": &"12",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_um7es")
+}],
+"loop": true,
+"name": &"2",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f5k4a")
+}],
+"loop": true,
+"name": &"3",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uq3j6")
+}],
+"loop": true,
+"name": &"4",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0meig")
+}],
+"loop": true,
+"name": &"5",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u4aoa")
+}],
+"loop": true,
+"name": &"6",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e0lud")
+}],
+"loop": true,
+"name": &"7",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bp13i")
+}],
+"loop": true,
+"name": &"8",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fmphh")
+}],
+"loop": true,
+"name": &"9",
+"speed": 5.0
+}]
+
+[node name="Upgrade" type="CanvasLayer"]
+process_mode = 3
+layer = 2
+script = ExtResource("1_jpotb")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(363, 243)
+texture = ExtResource("2_3pe1v")
+
+[node name="Button3" type="Sprite2D" parent="Sprite2D"]
+position = Vector2(176, -3)
+texture = ExtResource("3_ddw8h")
+
+[node name="Button" type="Button" parent="Sprite2D/Button3"]
+offset_left = -49.0
+offset_top = -31.0
+offset_right = 51.0
+offset_bottom = 69.0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_yn5sp")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_hdbbt")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_804wc")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_mxe8v")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_845d2")
+
+[node name="Label" type="Label" parent="Sprite2D/Button3"]
+offset_left = -70.0
+offset_top = 84.0
+offset_right = 80.0
+offset_bottom = 184.0
+theme_override_fonts/font = ExtResource("4_dey34")
+theme_override_font_sizes/font_size = 15
+text = "Some text about the item"
+horizontal_alignment = 1
+autowrap_mode = 2
+text_overrun_behavior = 1
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Sprite2D/Button3"]
+position = Vector2(2, 17)
+sprite_frames = SubResource("SpriteFrames_he6jx")
+animation = &"8"
+
+[node name="Button2" type="Sprite2D" parent="Sprite2D"]
+position = Vector2(-1, -2)
+texture = ExtResource("3_ddw8h")
+
+[node name="Button" type="Button" parent="Sprite2D/Button2"]
+offset_left = -49.0
+offset_top = -31.0
+offset_right = 51.0
+offset_bottom = 69.0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_yn5sp")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_hdbbt")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_804wc")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_mxe8v")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_845d2")
+
+[node name="Label" type="Label" parent="Sprite2D/Button2"]
+offset_left = -71.0
+offset_top = 81.0
+offset_right = 79.0
+offset_bottom = 181.0
+theme_override_fonts/font = ExtResource("4_dey34")
+theme_override_font_sizes/font_size = 15
+text = "Some text about the item"
+horizontal_alignment = 1
+autowrap_mode = 2
+text_overrun_behavior = 1
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Sprite2D/Button2"]
+position = Vector2(1, 19)
+sprite_frames = SubResource("SpriteFrames_he6jx")
+animation = &"11"
+
+[node name="Button1" type="Sprite2D" parent="Sprite2D"]
+position = Vector2(-173, -1)
+texture = ExtResource("3_ddw8h")
+
+[node name="Button" type="Button" parent="Sprite2D/Button1"]
+offset_left = -49.0
+offset_top = -32.0
+offset_right = 51.0
+offset_bottom = 68.0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_yn5sp")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_hdbbt")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_804wc")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_mxe8v")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_845d2")
+
+[node name="Label" type="Label" parent="Sprite2D/Button1"]
+offset_left = -71.0
+offset_top = 82.0
+offset_right = 79.0
+offset_bottom = 182.0
+theme_override_fonts/font = ExtResource("4_dey34")
+theme_override_font_sizes/font_size = 15
+text = "Some text about the item"
+horizontal_alignment = 1
+autowrap_mode = 2
+text_overrun_behavior = 1
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Sprite2D/Button1"]
+position = Vector2(-1, 18)
+sprite_frames = SubResource("SpriteFrames_he6jx")
+animation = &"3"
+
+[node name="Label" type="Label" parent="Sprite2D"]
+offset_left = -201.0
+offset_top = -136.0
+offset_right = 204.0
+offset_bottom = -106.0
+theme_override_fonts/font = ExtResource("4_dey34")
+theme_override_font_sizes/font_size = 30
+text = "New knowledge"
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_mgfo3")
+
+[node name="AudioStreamPlayer2D2" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_pyopj")
+autoplay = true
+max_distance = 4e+09
+attenuation = 1e-05
+panning_strength = 0.0
+
+[connection signal="pressed" from="Sprite2D/Button3/Button" to="." method="_on_button3_pressed"]
+[connection signal="pressed" from="Sprite2D/Button2/Button" to="." method="_on_button2_pressed"]
+[connection signal="pressed" from="Sprite2D/Button1/Button" to="." method="_on_button1_pressed"]
+[connection signal="finished" from="AudioStreamPlayer2D2" to="." method="_on_audio_stream_player_2d_2_finished"]

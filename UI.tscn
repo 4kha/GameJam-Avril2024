@@ -1,0 +1,345 @@
+[gd_scene load_steps=27 format=3 uid="uid://cm714m1wacaja"]
+
+[ext_resource type="Script" path="res://Information.gd" id="1_i2wsn"]
+[ext_resource type="Texture2D" uid="uid://cw2k26dw6y72r" path="res://ressources/art/image (9).png" id="1_mrmvf"]
+[ext_resource type="Script" path="res://Camera2D.gd" id="1_usubo"]
+[ext_resource type="Texture2D" uid="uid://dcve2h5ntbufn" path="res://ressources/art/empty.png" id="1_wv4a6"]
+[ext_resource type="Texture2D" uid="uid://cdy32r25jstp0" path="res://ressources/art/image (7).png" id="2_3lwa4"]
+[ext_resource type="Texture2D" uid="uid://cfg33n1kr6ynx" path="res://ressources/art/image (14).png" id="2_8ficj"]
+[ext_resource type="Texture2D" uid="uid://clwyccsl3nkaq" path="res://ressources/art/image (16).png" id="3_qx8c7"]
+[ext_resource type="Texture2D" uid="uid://dt5toauts0ot1" path="res://ressources/art/full.png" id="3_sj8b2"]
+[ext_resource type="Texture2D" uid="uid://cxvc4yleoqm6y" path="res://ressources/art/image (19).png" id="4_0myjn"]
+[ext_resource type="Texture2D" uid="uid://dn62x3fd0a1ac" path="res://ressources/art/image (15).png" id="4_gfi2l"]
+[ext_resource type="Texture2D" uid="uid://ddfl260nbn32r" path="res://ressources/art/image (8).png" id="5_dhok1"]
+[ext_resource type="Texture2D" uid="uid://deyjqr6lx3gw" path="res://ressources/art/image (10).png" id="5_ldnvp"]
+[ext_resource type="Texture2D" uid="uid://dsh6ruus1y7fw" path="res://ressources/art/image (12).png" id="6_g30xe"]
+[ext_resource type="Texture2D" uid="uid://di0r1ccvrxrr7" path="res://ressources/art/image (4).png" id="7_c87o6"]
+[ext_resource type="Texture2D" uid="uid://cjgn6mr8776yi" path="res://ressources/art/mute.png" id="10_ti7we"]
+[ext_resource type="Texture2D" uid="uid://be1n0n25fuug" path="res://ressources/art/image (24).png" id="16_0qkeo"]
+[ext_resource type="FontFile" uid="uid://5348kmef3b1g" path="res://ressources/art/8-BIT WONDER.TTF" id="16_yuw1d"]
+[ext_resource type="Texture2D" uid="uid://di55i071lujwc" path="res://ressources/art/image (25).png" id="18_vavf8"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yxtpb"]
+atlas = ExtResource("10_ti7we")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cwsg6"]
+atlas = ExtResource("10_ti7we")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hr5nn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yxtpb")
+}],
+"loop": true,
+"name": &"listen",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cwsg6")
+}],
+"loop": true,
+"name": &"muted",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a1vnl"]
+size = Vector2(31, 32)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5cgr3"]
+bg_color = Color(0.501961, 0.701961, 0.886275, 0.454902)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+corner_radius_top_right = 2
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fonw8"]
+size = Vector2(125.332, 52.5)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xdc23"]
+radius = 15.5602
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_macwu"]
+size = Vector2(44.5, 46)
+
+[node name="UI" type="CanvasLayer"]
+
+[node name="Information" type="Node2D" parent="."]
+z_index = 3000
+position = Vector2(1167, 386)
+script = ExtResource("1_i2wsn")
+
+[node name="progress" type="TextureProgressBar" parent="Information"]
+z_index = 3000
+offset_left = -1058.0
+offset_top = -307.0
+offset_right = -554.0
+offset_bottom = -271.0
+size_flags_horizontal = 4
+size_flags_vertical = 0
+max_value = 4.0
+step = 0.0
+fill_mode = 1
+texture_under = ExtResource("1_wv4a6")
+texture_over = ExtResource("1_mrmvf")
+texture_progress = ExtResource("3_sj8b2")
+metadata/_edit_group_ = true
+
+[node name="Divider" type="Sprite2D" parent="Information/progress"]
+position = Vector2(250, -11)
+rotation = 0.00252235
+texture = ExtResource("5_ldnvp")
+
+[node name="Divider" type="Sprite2D" parent="Information/progress/Divider"]
+position = Vector2(1.07315, 28.9974)
+rotation = -0.00252235
+texture = ExtResource("4_0myjn")
+
+[node name="Inquisition" type="Sprite2D" parent="Information/progress"]
+position = Vector2(532, 18)
+rotation = 0.00252235
+texture = ExtResource("2_3lwa4")
+
+[node name="Undead" type="Sprite2D" parent="Information/progress"]
+position = Vector2(-29, 18)
+rotation = 0.00252235
+texture = ExtResource("5_dhok1")
+
+[node name="Inquisition_Score" type="Label" parent="Information/progress"]
+layout_mode = 0
+offset_left = 296.0
+offset_top = 4.0
+offset_right = 496.0
+offset_bottom = 29.0
+theme_override_fonts/font = ExtResource("16_yuw1d")
+theme_override_font_sizes/font_size = 25
+text = "0
+"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Undead_Score" type="Label" parent="Information/progress"]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 4.0
+offset_right = 210.0
+offset_bottom = 29.0
+theme_override_fonts/font = ExtResource("16_yuw1d")
+theme_override_font_sizes/font_size = 25
+text = "0
+"
+vertical_alignment = 1
+
+[node name="Mute" type="Area2D" parent="Information"]
+position = Vector2(-481, -354)
+
+[node name="Mute" type="AnimatedSprite2D" parent="Information/Mute"]
+sprite_frames = SubResource("SpriteFrames_hr5nn")
+animation = &"listen"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Information/Mute"]
+position = Vector2(0.5, 0)
+shape = SubResource("RectangleShape2D_a1vnl")
+
+[node name="Cadre" type="Sprite2D" parent="Information"]
+position = Vector2(-807, -146)
+texture = ExtResource("6_g30xe")
+
+[node name="Score" type="Sprite2D" parent="Information"]
+position = Vector2(-807, -355)
+texture = ExtResource("7_c87o6")
+
+[node name="Score" type="Label" parent="Information/Score"]
+offset_left = -99.0
+offset_top = -4.0
+offset_right = 101.0
+offset_bottom = 19.0
+theme_override_fonts/font = ExtResource("16_yuw1d")
+text = "0
+"
+horizontal_alignment = 1
+
+[node name="Timer" type="Timer" parent="Information"]
+
+[node name="distance" type="Label" parent="Information"]
+offset_left = -810.0
+offset_top = 48.0
+offset_right = -510.0
+offset_bottom = 71.0
+theme_override_fonts/font = ExtResource("16_yuw1d")
+theme_override_font_sizes/font_size = 20
+text = "0m
+"
+horizontal_alignment = 2
+vertical_alignment = 1
+metadata/_edit_group_ = true
+
+[node name="Inquisition" type="Sprite2D" parent="Information/distance"]
+position = Vector2(328, 11)
+rotation = 0.00252235
+texture = ExtResource("2_3lwa4")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(360, 240)
+scale = Vector2(1, -0.959999)
+limit_top = -500
+limit_bottom = 2000
+script = ExtResource("1_usubo")
+
+[node name="Panel" type="Panel" parent="."]
+offset_left = 1125.0
+offset_top = 380.0
+offset_right = 1165.0
+offset_bottom = 420.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_5cgr3")
+
+[node name="leaveEast" type="Area2D" parent="."]
+position = Vector2(34, 381)
+scale = Vector2(0.964, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="leaveEast"]
+position = Vector2(639.004, 64)
+shape = SubResource("RectangleShape2D_fonw8")
+
+[node name="Spell1" type="Area2D" parent="."]
+position = Vector2(-34, 360)
+metadata/_edit_group_ = true
+
+[node name="Label" type="Label" parent="Spell1"]
+z_index = 30
+offset_left = 49.0
+offset_top = 15.0
+offset_right = 89.0
+offset_bottom = 38.0
+theme_override_fonts/font = ExtResource("16_yuw1d")
+theme_override_font_sizes/font_size = 10
+text = "20"
+horizontal_alignment = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="Spell1"]
+position = Vector2(68, 21)
+scale = Vector2(0.964, 1)
+texture = ExtResource("2_8ficj")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Spell1"]
+modulate = Color(1, 1, 1, 0.835294)
+z_index = 20
+position = Vector2(68, 21)
+texture = ExtResource("16_0qkeo")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Spell1"]
+position = Vector2(68, 21)
+scale = Vector2(0.964, 1)
+shape = SubResource("CircleShape2D_xdc23")
+
+[node name="Spell2" type="Area2D" parent="."]
+position = Vector2(76, 434)
+metadata/_edit_group_ = true
+
+[node name="Label" type="Label" parent="Spell2"]
+z_index = 30
+offset_left = -10.0
+offset_top = -48.0
+offset_right = 30.0
+offset_bottom = -25.0
+theme_override_fonts/font = ExtResource("16_yuw1d")
+theme_override_font_sizes/font_size = 10
+text = "20"
+horizontal_alignment = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="Spell2"]
+position = Vector2(9, -42)
+scale = Vector2(0.964, 1)
+texture = ExtResource("3_qx8c7")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Spell2"]
+modulate = Color(1, 1, 1, 0.835294)
+z_index = 20
+position = Vector2(9, -42)
+scale = Vector2(0.964, 1)
+texture = ExtResource("16_0qkeo")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Spell2"]
+position = Vector2(9, -42)
+scale = Vector2(0.964, 1)
+shape = SubResource("CircleShape2D_xdc23")
+
+[node name="Spell3" type="Area2D" parent="."]
+position = Vector2(62, 381)
+metadata/_edit_group_ = true
+
+[node name="Label" type="Label" parent="Spell3"]
+z_index = 30
+offset_left = 18.0
+offset_top = 58.0
+offset_right = 58.0
+offset_bottom = 81.0
+theme_override_fonts/font = ExtResource("16_yuw1d")
+theme_override_font_sizes/font_size = 10
+text = "20"
+horizontal_alignment = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="Spell3"]
+position = Vector2(37, 64)
+scale = Vector2(0.964, 1)
+texture = ExtResource("4_gfi2l")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Spell3"]
+modulate = Color(1, 1, 1, 0.835294)
+z_index = 20
+position = Vector2(37, 64)
+scale = Vector2(0.929296, 1)
+texture = ExtResource("16_0qkeo")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Spell3"]
+position = Vector2(37, 64)
+scale = Vector2(0.964, 1)
+shape = SubResource("CircleShape2D_xdc23")
+
+[node name="Inquisition" type="Area2D" parent="."]
+position = Vector2(618, 87)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Inquisition"]
+position = Vector2(23, 11)
+scale = Vector2(0.964, 1)
+shape = SubResource("CircleShape2D_xdc23")
+
+[node name="Army" type="Area2D" parent="."]
+position = Vector2(57, 86)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Army"]
+position = Vector2(23, 11)
+scale = Vector2(0.964, 1)
+shape = SubResource("CircleShape2D_xdc23")
+
+[node name="Portrait" type="Area2D" parent="."]
+position = Vector2(17, 380)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Portrait"]
+position = Vector2(23, 58)
+scale = Vector2(0.964, 1)
+texture = ExtResource("18_vavf8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Portrait"]
+position = Vector2(22.75, 58)
+shape = SubResource("RectangleShape2D_macwu")
+
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="input_event" from="Information/Mute" to="Information" method="_on_mute_input_event"]
+[connection signal="timeout" from="Information/Timer" to="Information" method="_on_timer_timeout"]
+[connection signal="input_event" from="leaveEast" to="Camera2D" method="_on_leave_east_input_event"]
+[connection signal="input_event" from="Spell1" to="Camera2D" method="_on_spell_1_input_event"]
+[connection signal="input_event" from="Spell2" to="Camera2D" method="_on_spell_2_input_event"]
+[connection signal="input_event" from="Spell3" to="Camera2D" method="_on_spell_3_input_event"]
+[connection signal="input_event" from="Inquisition" to="Information" method="_on_inquisition_input_event"]
+[connection signal="input_event" from="Army" to="Camera2D" method="_on_army_input_event"]
+[connection signal="input_event" from="Portrait" to="Camera2D" method="_input_event"]
+[connection signal="timeout" from="Timer" to="Camera2D" method="_on_timer_timeout"]

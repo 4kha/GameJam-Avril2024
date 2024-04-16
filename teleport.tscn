@@ -1,0 +1,49 @@
+[gd_scene load_steps=7 format=3 uid="uid://jk2602yi85d4"]
+
+[ext_resource type="Script" path="res://teleport.gd" id="1_nkl0r"]
+[ext_resource type="Texture2D" uid="uid://bufe5xa478nvo" path="res://ressources/art/pentagram-Sheet.png" id="2_wvsyq"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_da0ex"]
+atlas = ExtResource("2_wvsyq")
+region = Rect2(0, 0, 70, 38)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_78bxi"]
+atlas = ExtResource("2_wvsyq")
+region = Rect2(70, 0, 70, 38)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_imhvl"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_da0ex")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_78bxi")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5rmeh"]
+radius = 25.0
+height = 85.0
+
+[node name="teleport" type="Area2D"]
+scale = Vector2(1.5, 1.5)
+script = ExtResource("1_nkl0r")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+modulate = Color(0.545098, 0.427451, 0.611765, 1)
+sprite_frames = SubResource("SpriteFrames_imhvl")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_5rmeh")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 4.0
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
