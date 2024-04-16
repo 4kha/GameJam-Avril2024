@@ -23,7 +23,7 @@ func _ready():
 	current_life = max_life
 	bar.max_value = max_life
 	bar.hide()
-	z_index = int(position.y + 30)
+	z_index = int(position.y + 33)
 	$Smoke.hide()
 	$magic.hide()
 	$magic.play()

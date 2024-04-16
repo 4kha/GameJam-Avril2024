@@ -21,7 +21,7 @@ func _ready():
 	current_life = max_life
 	bar.max_value = max_life
 	bar.hide()
-	z_index = int(position.y + 70)
+	z_index = int(position.y)
 	$AnimatedSprite2D.play("default")
 	$Smoke.hide()
 	$magic.hide()
@@ -70,7 +70,6 @@ func _on_damage_area_body_exited(body):
 	elif "necromancer" in body.name:
 		spawning = 0
 		if destroyed == 1 and spawning_magic == 0:
-			print(spawning_magic)
 			timer.stop()
 			$magic.hide()
 

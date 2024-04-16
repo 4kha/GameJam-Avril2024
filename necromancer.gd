@@ -92,3 +92,7 @@ func cast_spell3(pos):
 	sum.position = pos
 	sum.add_to_group("summon")
 	get_parent().add_child(sum)
+
+func teleported():
+	position.x -= 400
+	target = position

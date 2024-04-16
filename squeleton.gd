@@ -46,7 +46,7 @@ func _input(event):
 		get_parent().get_parent().get_all_army()
 
 func _physics_process(_delta):
-	z_index = int(position.y) 
+	z_index = int(position.y) + 12
 	if just_spawned == 0:
 		if leaving == 1:
 			target.x = position.x + 2000 

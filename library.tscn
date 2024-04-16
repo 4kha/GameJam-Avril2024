@@ -133,7 +133,8 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k3hhx"]
 size = Vector2(90.75, 63.25)
 
-[node name="library" type="StaticBody2D"]
+[node name="library" type="StaticBody2D" groups=["house"]]
+position = Vector2(49, 50)
 script = ExtResource("1_bik7d")
 
 [node name="magic" type="AnimatedSprite2D" parent="."]
@@ -158,7 +159,6 @@ scale = Vector2(0.484275, 1.62451)
 texture = ExtResource("4_40ad5")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
 position = Vector2(-4.25, 24.25)
 shape = SubResource("RectangleShape2D_ada4s")
 metadata/_edit_group_ = true
@@ -169,7 +169,6 @@ collision_layer = 3
 collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DamageArea"]
-visible = false
 position = Vector2(-43, -24)
 shape = SubResource("CircleShape2D_ijpca")
 

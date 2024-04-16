@@ -9,6 +9,7 @@ var house_delay = 0
 var switch = 0
 var houselist = []
 var flowerlist = []
+var last_library = 0
 @onready var necromancer = get_node("Units/necromancer")
 @onready var house = preload("res://house.tscn")
 @onready var tower = preload("res://tower.tscn")
@@ -43,6 +44,7 @@ func spawn_random_house():
 		spawn_tower(valid_random())
 	if n == 2: 
 		spawn_library(valid_random())
+		last_library = 0
 	spawn_flower(valid_random_flower())
 	
 func get_unit():
@@ -149,19 +151,27 @@ func _inquisition_progress(move):
 	house_delay += move
 
 func spawn_x_house(nbr):
+
 	for i in nbr:
 		chunck += 1
-		spawn_random_house()
+		last_library += 1
+		if (last_library > 7):
+			spawn_library(valid_random())
+			last_library = 0
+		else:
+			spawn_random_house()
 		
 func check_house_proximity(pos):
 	for h in houselist:
+		if pos.distance_to(Vector2((h.position.x),(h.position.y))) < 100:
+			return 1
 		if pos.distance_to(Vector2((h.position.x + 32),(h.position.y + 32))) < 100:
 			return 1
 	return 0
 	
 func check_flower_proximity(pos):
 	for f in flowerlist:
-		if pos.distance_to(Vector2((f.position.x + 32),(f.position.y + 32))) < 120:
+		if pos.distance_to(Vector2((f.position.x + 10),(f.position.y + 10))) < 120:
 			return 1
 	return 0
 	
@@ -172,6 +182,7 @@ func valid_random_flower():
 	return random
 	
 func valid_random():
+	get_house()
 	var random = get_random_coordinate()
 	while check_house_proximity(random):
 		random = get_random_coordinate()

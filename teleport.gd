@@ -19,4 +19,6 @@ func _on_timer_timeout():
 	for u in body:
 		if u.is_in_group("squeleton"):
 			u.teleported()
+		if u.is_in_group("player"):
+			u.teleported()
 	end = 1

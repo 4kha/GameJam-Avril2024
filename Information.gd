@@ -4,7 +4,7 @@ extends Node2D
 @onready var camera = get_node("../Camera2D")
 @onready var upgrade = get_tree().get_root().get_node("./main/Upgrade")
 signal inquisition_move
-var inquisition_army = -1
+var inquisition_army = 1
 var undead_army = 0
 var difficulty = 1
 var score = 0
@@ -18,7 +18,7 @@ var full_army = 0
 func _ready():
 	$progress.max_value = 4
 	$progress.value = 2
-	$progress/Divider.position.x = 504
+	$progress/Divider.position.x = 0
 	$progress/Divider/Divider.hide()
 	connect("inquisition_move", Callable(get_parent().get_parent(), "_inquisition_progress"))
 	start_game()
@@ -35,28 +35,29 @@ func _on_timer_timeout():
 	target_value = $progress.value
 	if score % 60 == 0:
 		difficulty += 1
-	if score % 15 == 0:
+	if score % 20 == 0:
 		inquisition_army += difficulty
 	target_value = inquisition_army
 	score += 1
 	full_army_count()
 	update_score()
 	update_inquisition(target_value)
-	divider()
 	speed_inquisition_change()
 	tween.tween_property($progress, "max_value", full_army, 0.3)
+	divider()
 	if $progress.value == $progress.max_value or $progress.value == 0:
 		$progress/Divider/Divider.hide()
+	else:
+		$progress/Divider/Divider.show()
 
 func speed_inquisition_change():
 	if (percentage() >= 0.5):
 		speed_inquisition += 0.01 * difficulty * (1 / float(upgrade.buff_slow_inqui + 1))
 	else:
-		speed_inquisition -= 0.01 * upgrade.buff_slow_inqui
+		speed_inquisition -= 0.01
 
 func divider():
 	var tween = create_tween()
-	$progress/Divider/Divider.show()
 	tween.tween_property($progress/Divider, "position", Vector2(500 - percentage() * 500 , -11), 0.3)
 
 func update_inquisition(target_v):
@@ -65,9 +66,10 @@ func update_inquisition(target_v):
 	
 func to_war(nbr):
 	if (nbr):
-		undead_army += 2
+		undead_army += 1
 	else:
 		undead_army += 1
+	speed_inquisition -= (0.1)
 	full_army_count()
 
 func full_army_count():

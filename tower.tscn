@@ -127,7 +127,8 @@ animations = [{
 radius = 31.0
 height = 78.0
 
-[node name="Tower" type="StaticBody2D"]
+[node name="Tower" type="StaticBody2D" groups=["house"]]
+position = Vector2(0, 33)
 script = ExtResource("1_0l8p3")
 
 [node name="magic" type="AnimatedSprite2D" parent="."]
@@ -138,7 +139,6 @@ animation = &"magic circle"
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(31, 33)
 sprite_frames = SubResource("SpriteFrames_vpu8q")
-animation = &"destroyed"
 
 [node name="Sprite2D" type="Sprite2D" parent="AnimatedSprite2D"]
 z_index = -4096
@@ -162,9 +162,8 @@ shape = SubResource("CircleShape2D_x1bsl")
 [node name="Timer" type="Timer" parent="."]
 
 [node name="ProgressBar" type="TextureProgressBar" parent="."]
-offset_top = -42.0
+offset_top = -40.0
 offset_right = 61.0
-offset_bottom = -2.0
 value = 50.0
 texture_under = ExtResource("6_ux82s")
 texture_over = ExtResource("6_ux82s")
