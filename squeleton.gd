@@ -42,7 +42,8 @@ func _input(event):
 			set_selected(true)
 	if event is InputEventMouseButton \
 	and event.is_action_pressed("leftclick") \
-	and event.double_click:
+	and event.double_click \
+	and in_model == true:
 		get_parent().get_parent().get_all_army()
 
 func _physics_process(_delta):
@@ -54,7 +55,7 @@ func _physics_process(_delta):
 		if follow_cursor == true:
 			if selected:
 				target = get_global_mouse_position()
-		velocity = position.direction_to(target) * (SPEED + (upgrade.buff_skeleton_fast + 15))
+		velocity = position.direction_to(target).normalized() * (SPEED + (upgrade.buff_skeleton_fast + 15))
 		if position.distance_to(target) > 20:
 			move_and_slide()
 			$Timer.start()

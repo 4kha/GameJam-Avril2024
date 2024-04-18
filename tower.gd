@@ -6,11 +6,12 @@ var current_life
 var units = 0
 var destroyed = 0
 var spawning = 0;
-var house_zombie = 20
+var house_zombie = 10
 var shaking = 0
 var origin
 var spawning_magic = 0
 var spawn_max = 1
+var spawn_total = 0
 @onready var bar = $ProgressBar
 @onready var timer = $Timer
 @onready var unit = preload("res://squeleton.tscn")
@@ -38,8 +39,7 @@ func _process(_delta):
 			$AudioStreamPlayer2D.play()
 			houseDestroyed()
 		elif destroyed == 1:
-			for i in (spawn_max + upgrade.buff_spawn_more):
-				spawn_unit(Vector2(position.x + 32, position.y + 32))
+			spawn_multiple()
 			house_zombie -= 1
 			bar.value = max_life / 3.0
 			current_life = max_life
@@ -54,6 +54,12 @@ func _process(_delta):
 		$AnimatedSprite2D.offset = Randshake()
 		if shaking == 0:
 			$AnimatedSprite2D.offset = Vector2(0,0)
+
+func spawn_multiple():
+	spawn_total += 2 + upgrade.buff_spawn_more * 0.6
+	while spawn_total >= 1.0:
+		spawn_total -= 1
+		spawn_unit(Vector2(position.x + 32, position.y + 50))
 
 func _on_damage_area_body_entered(body):
 	if body.is_in_group("squeleton"):
@@ -92,9 +98,7 @@ func damage():
 		if $magic.visible == false and spawning_magic == 0:
 			$magic.show()
 			$AudioStreamPlayer2D3.play()
-		elif spawning_magic == 1:
-			$magic.hide()
-		current_life -= SPAWN_FILL_RATE + (upgrade.buff_spawn_faster * 3)
+		current_life -= (SPAWN_FILL_RATE + (upgrade.buff_spawn_faster * 3)) * (spawning + spawning_magic)
 		bar_damage()
 
 func bar_damage():
@@ -141,7 +145,7 @@ func _on_spellhitbox_area_entered(area):
 			area.explode()
 			shaking = 10
 			bar_damage()
-			if current_life <= 0 and spawning_magic == 1:
+			if current_life <= 0 and (spawning_magic == 1 or spawning == 1):
 				startAttack()
 	if area.is_in_group("summon"):
 		spawning_magic = 1
@@ -154,5 +158,6 @@ func _on_spellhitbox_area_exited(area):
 		if spawning == 0:
 			$Timer.stop()
 		spawning_magic = 0
+
 
 

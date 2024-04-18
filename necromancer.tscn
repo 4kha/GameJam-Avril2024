@@ -70,6 +70,13 @@ border_color = Color(1, 1, 1, 1)
 safe_margin = 10.0
 script = ExtResource("1_b4el0")
 
+[node name="Label" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Spell"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, 15)
 sprite_frames = SubResource("SpriteFrames_kku7j")

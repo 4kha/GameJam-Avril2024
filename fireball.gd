@@ -1,6 +1,6 @@
 extends Area2D
 @onready var upgrade = get_tree().get_root().get_node("./main/Upgrade")
-var damage = 10
+var damage = 15
 var end = 0
 var free = 0
 # Called when the node enters the scene tree for the first time.
@@ -19,7 +19,7 @@ func _process(_delta):
 		queue_free()
 		
 func get_damage():
-	return damage + (upgrade.buff_dmg_flame * 5)
+	return damage + (upgrade.buff_dmg_flame * 7)
 
 func explode():
 	$Fireball.hide()

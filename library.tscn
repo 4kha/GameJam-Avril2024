@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://clagg388sl0m7"]
+[gd_scene load_steps=30 format=3 uid="uid://clagg388sl0m7"]
 
 [ext_resource type="Script" path="res://library.gd" id="1_bik7d"]
 [ext_resource type="Texture2D" uid="uid://bf3rx2asretea" path="res://ressources/art/maison-export.png" id="2_l0n7x"]
@@ -10,6 +10,7 @@
 [ext_resource type="AudioStream" uid="uid://djs1b2f1psktg" path="res://ressources/sound/hit.wav" id="6_aukwd"]
 [ext_resource type="AudioStream" uid="uid://bq7dxjkisqv6k" path="res://ressources/sound/explosion.wav" id="7_8g8dv"]
 [ext_resource type="Texture2D" uid="uid://bwolea1ifhj7j" path="res://ressources/art/explosion.png" id="8_hjcql"]
+[ext_resource type="FontFile" uid="uid://5348kmef3b1g" path="res://ressources/art/8-BIT WONDER.TTF" id="11_7qatj"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gp2if"]
 atlas = ExtResource("3_4te8k")
@@ -210,6 +211,20 @@ position = Vector2(-49, -45)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="spellhitbox"]
 position = Vector2(44.625, 63.375)
 shape = SubResource("RectangleShape2D_k3hhx")
+
+[node name="tuto" type="Label" parent="."]
+offset_left = -94.0
+offset_top = 60.0
+offset_right = 90.0
+offset_bottom = 95.0
+theme_override_fonts/font = ExtResource("11_7qatj")
+theme_override_font_sizes/font_size = 10
+text = "Destroy to
+get upgrades"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Timer" type="Timer" parent="tuto"]
 
 [connection signal="body_entered" from="DamageArea" to="." method="_on_damage_area_body_entered"]
 [connection signal="body_exited" from="DamageArea" to="." method="_on_damage_area_body_exited"]

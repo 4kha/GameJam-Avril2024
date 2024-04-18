@@ -8,7 +8,7 @@ var destroyed = 0
 var spawning = 0
 var spawning_magic = 0
 var shaking = 0
-var origin
+
 @onready var bar = $ProgressBar
 @onready var timer = $Timer
 @onready var unit = preload("res://squeleton.tscn")
@@ -17,6 +17,7 @@ var origin
 # Called when the node enters the scene tree for the first time.
 	
 func _ready():
+	$tuto.hide()
 	add_to_group("house")
 	current_life = max_life
 	bar.max_value = max_life
@@ -49,6 +50,9 @@ func _process(_delta):
 		$AnimatedSprite2D.offset = Randshake()
 		if shaking == 0:
 			$AnimatedSprite2D.offset = Vector2(0,0)
+			
+func tuto_timer():
+	$tuto.show()
 
 func _on_damage_area_body_entered(body):
 	if body.is_in_group("squeleton"):
@@ -87,9 +91,7 @@ func damage():
 		if $magic.visible == false and spawning_magic == 0:
 			$magic.show()
 			$AudioStreamPlayer2D3.play()
-		elif spawning_magic == 1:
-			$magic.hide()
-		current_life -= SPAWN_FILL_RATE + (upgrade.buff_spawn_faster * 3)
+		current_life -= (SPAWN_FILL_RATE + (upgrade.buff_spawn_faster * 3)) * (spawning + spawning_magic)
 		bar_damage()
 
 func bar_damage():
@@ -105,6 +107,7 @@ func houseDestroyed():
 	bar.hide()
 	$AnimatedSprite2D.play("destroyed")
 	destroyed = 1
+	$tuto.hide()
 	bar.value = max_life
 	current_life = max_life
 	
@@ -136,11 +139,11 @@ func _on_smoke_animation_finished():
 func _on_spellhitbox_area_entered(area):
 	if area.is_in_group("fireball"):
 		if destroyed == 0:
-			current_life -= area.get_damage()
+			current_life -= area.damage
 			area.explode()
 			shaking = 10
 			bar_damage()
-			if current_life <= 0 and spawning_magic == 1:
+			if current_life <= 0 and (spawning_magic == 1 or spawning == 1):
 				startAttack()
 	if area.is_in_group("summon"):
 		spawning_magic = 1

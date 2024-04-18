@@ -7,6 +7,7 @@ var skip = 0
 
 func _ready():
 	$Button.hide()
+	$AudioStreamPlayer2D.play()
 	$AnimationPlayer.play("intro")
 	$AnimationPlayer/House/magic.play()
 	$AnimationPlayer/Squeletton2.play()
@@ -14,6 +15,7 @@ func _ready():
 	$AnimationPlayer/Squeletton4.play()
 	$AnimationPlayer/Fireball.play()
 	$AnimationPlayer/Player.play()
+	global.skipped = 0
 
 func _process(_delta):
 	if shaking == 1:

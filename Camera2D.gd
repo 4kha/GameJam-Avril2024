@@ -21,13 +21,16 @@ signal avance
 var spell1_cd_max = 15
 var spell2_cd_max = 20
 var spell3_cd_max = 30
+var spell1_reset = 0
+var spell2_reset = 0
+var spell3_reset = 0
 
 var spell1_cd = 0
 var spell2_cd = 0
 var spell3_cd = 0
 
 #camera control
-@export var SPEED = 20.0
+@export var SPEED = 15.0
 @onready var main = get_parent().get_parent()
 @onready var necromancer = get_parent().get_parent().get_node("Units/necromancer")
 @onready var upgrade = get_tree().get_root().get_node("./main/Upgrade")
@@ -71,7 +74,7 @@ func _process(_delta):
 	if Input.is_action_pressed("focus_recenter"):
 		emit_signal("recenter")
 	if Input.is_action_pressed("quit"):
-		get_tree().quit()
+		pass
 	if Input.is_action_pressed("Spell1"):
 		cast_spell1()
 	if Input.is_action_pressed("Spell2"):
@@ -85,9 +88,9 @@ func _process(_delta):
 		position.x = limit_left_fix
 	if position.x + SCREENSIZE > limit_right_fix:
 		position.x = limit_right_fix - SCREENSIZE
-	check_cd(spell1_cd, get_node("../Spell1/Label"), get_node("../Spell1/Sprite2D2"))
-	check_cd(spell2_cd, get_node("../Spell2/Label"), get_node("../Spell2/Sprite2D2"))
-	check_cd(spell3_cd, get_node("../Spell3/Label"), get_node("../Spell3/Sprite2D2"))
+	check_cd(spell1_cd, get_node("../Spell1/Label"), get_node("../Spell1/Sprite2D2"), 1)
+	check_cd(spell2_cd, get_node("../Spell2/Label"), get_node("../Spell2/Sprite2D2"), 2)
+	check_cd(spell3_cd, get_node("../Spell3/Label"), get_node("../Spell3/Sprite2D2"), 3)
 	
 func _input(event):
 	if event is InputEventMouse:
@@ -143,26 +146,37 @@ func _on_spell_3_input_event(_viewport, event, _shape_idx):
 			
 func cast_spell1():
 	if spell1_cd == 0:
+		reset_over()
 		get_node("../Spell1/Sprite2D2").show()
 		emit_signal("spell1")
 
 func cast_spell2():
 	if spell2_cd == 0:
+		reset_over()
 		get_node("../Spell2/Sprite2D2").show()
 		emit_signal("spell2")
-		
+
+func _unhandled_input(event):
+	if event is InputEventMouse \
+	and event.is_action_pressed("leftclick"):
+		main.clear_selection()
+
 func cast_spell3():
 	if spell3_cd == 0:
+		reset_over()
 		get_node("../Spell3/Sprite2D2").show()
 		emit_signal("spell3")
 
 func casted(spell_casted):
 	if spell_casted == 1:
 		spell1_cd = spell1_cd_max - min(upgrade.buff_cdr_flame * 3, 12)
+		spell1_reset = 0
 	elif spell_casted == 2:
 		spell2_cd = spell2_cd_max - min(upgrade.buff_cdr_tp * 4, 15)
+		spell2_reset = 0
 	elif spell_casted == 3:
 		spell3_cd = spell3_cd_max - min(upgrade.buff_cdr_summon * 5, 25)
+		spell3_reset = 0
 	get_node("../Timer").start()
 
 
@@ -172,13 +186,21 @@ func _on_timer_timeout():
 	if spell2_cd > 0:
 		spell2_cd -= 1
 	if spell3_cd > 0:
-		spell3_cd -= 1	
+		spell3_cd -= 1
 		
-func check_cd(cdr, label, grey):
+func check_cd(cdr, label, grey, nbr):
 	if cdr == 0:
 		label.hide()
+		if nbr == 1 and spell1_reset == 0:
+			grey.hide()
+			spell1_reset = 1
+		if nbr == 2 and spell2_reset == 0:
+			grey.hide()
+			spell2_reset = 1
+		if nbr == 3 and spell3_reset == 0:
+			grey.hide()
+			spell3_reset = 1
 	else:
 		label.show()
 		label.text = str(cdr)
 		grey.show()
-	

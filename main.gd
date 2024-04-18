@@ -3,13 +3,14 @@ extends Node2D
 
 var units = []
 var lock = false
-var chunck = 1
+var chunck = 2
 var distance_made = 0
 var house_delay = 0
 var switch = 0
 var houselist = []
 var flowerlist = []
 var last_library = 0
+var first_library = 0
 @onready var necromancer = get_node("Units/necromancer")
 @onready var house = preload("res://house.tscn")
 @onready var tower = preload("res://tower.tscn")
@@ -21,6 +22,7 @@ func _ready():
 	if (global.skipped == 1):
 		$Intro.hide()
 	else:
+		$Houses/house.tuto()
 		$Intro/Timer.start()
 	$AnimationPlayer.play("fade")
 	spawn_x_house(14)
@@ -216,6 +218,9 @@ func spawn_library(pos):
 	var library1 = library.instantiate()
 	library1.position = pos
 	$Houses.add_child(library1) 
+	if first_library == 0 and global.skipped == 0:
+		library1.tuto_timer()
+		first_library = 1
 	get_house()
 	
 func _input(event):

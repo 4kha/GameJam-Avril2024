@@ -9,7 +9,7 @@ extends CharacterBody2D
 @onready var summon = preload("res://summoning.tscn")
 @onready var teleport = preload("res://teleport.tscn")
 
-const FIREBALL_SPEED = 400
+const FIREBALL_SPEED = 800
 const SPEED = 50 
 var spell = 0
 
@@ -46,7 +46,7 @@ func _physics_process(_delta):
 	if follow_cursor == true:
 		if selected:
 			target = get_global_mouse_position()
-	velocity = position.direction_to(target) * (SPEED + (upgrade.buff_fast_necro * 30))
+	velocity = position.direction_to(target).normalized() * (SPEED + (upgrade.buff_fast_necro * 30))
 	if position.distance_to(target) > 10:
 		move_and_slide()
 	else:
@@ -94,5 +94,5 @@ func cast_spell3(pos):
 	get_parent().add_child(sum)
 
 func teleported():
-	position.x -= 400
+	position.x -= 600
 	target = position

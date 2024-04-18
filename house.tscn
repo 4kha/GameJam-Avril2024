@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://sthynnldqaj8"]
+[gd_scene load_steps=29 format=3 uid="uid://sthynnldqaj8"]
 
 [ext_resource type="Script" path="res://house.gd" id="1_q6ox1"]
 [ext_resource type="Texture2D" uid="uid://ohvl6lxv5n36" path="res://ressources/art/image (17).png" id="2_hiysm"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://b5okiinngad32" path="res://ressources/art/image (23).png" id="6_wds1e"]
 [ext_resource type="Texture2D" uid="uid://bvr3ab8uxb6iv" path="res://ressources/art/image (22).png" id="7_a7vcj"]
 [ext_resource type="Texture2D" uid="uid://bwolea1ifhj7j" path="res://ressources/art/explosion.png" id="9_uds01"]
+[ext_resource type="FontFile" uid="uid://5348kmef3b1g" path="res://ressources/art/8-BIT WONDER.TTF" id="12_2rhl6"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gp2if"]
 atlas = ExtResource("2_lxnxy")
@@ -197,6 +198,18 @@ frame_progress = 1.0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="spellhitbox"]
 position = Vector2(31.25, 47.75)
 shape = SubResource("RectangleShape2D_8ypfb")
+
+[node name="Label" type="Label" parent="."]
+offset_left = -94.0
+offset_top = 84.0
+offset_right = 156.0
+offset_bottom = 107.0
+theme_override_fonts/font = ExtResource("12_2rhl6")
+theme_override_font_sizes/font_size = 10
+text = "Get the necromancer closer
+to summon skeletons"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="body_entered" from="DamageArea" to="." method="_on_damage_area_body_entered"]
 [connection signal="body_exited" from="DamageArea" to="." method="_on_damage_area_body_exited"]

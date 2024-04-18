@@ -183,6 +183,9 @@ position = Vector2(328, 11)
 rotation = 0.00252235
 texture = ExtResource("2_3lwa4")
 
+[node name="Timer2" type="Timer" parent="Information"]
+wait_time = 10.0
+
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(360, 240)
 scale = Vector2(1, -0.959999)
@@ -333,8 +336,23 @@ shape = SubResource("RectangleShape2D_macwu")
 
 [node name="Timer" type="Timer" parent="."]
 
+[node name="Label" type="Label" parent="."]
+offset_left = 167.0
+offset_top = 126.0
+offset_right = 567.0
+offset_bottom = 161.0
+theme_override_fonts/font = ExtResource("16_yuw1d")
+text = "Leave skeletons behind
+to slow down the inquisition"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Timer" type="Timer" parent="Label"]
+wait_time = 10.0
+
 [connection signal="input_event" from="Information/Mute" to="Information" method="_on_mute_input_event"]
 [connection signal="timeout" from="Information/Timer" to="Information" method="_on_timer_timeout"]
+[connection signal="timeout" from="Information/Timer2" to="Information" method="_on_timer_2_timeout"]
 [connection signal="input_event" from="leaveEast" to="Camera2D" method="_on_leave_east_input_event"]
 [connection signal="input_event" from="Spell1" to="Camera2D" method="_on_spell_1_input_event"]
 [connection signal="input_event" from="Spell2" to="Camera2D" method="_on_spell_2_input_event"]
@@ -343,3 +361,4 @@ shape = SubResource("RectangleShape2D_macwu")
 [connection signal="input_event" from="Army" to="Camera2D" method="_on_army_input_event"]
 [connection signal="input_event" from="Portrait" to="Camera2D" method="_input_event"]
 [connection signal="timeout" from="Timer" to="Camera2D" method="_on_timer_timeout"]
+[connection signal="timeout" from="Label/Timer" to="Information" method="_on_timer_timeoutTUTO"]

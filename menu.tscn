@@ -1,17 +1,77 @@
-[gd_scene load_steps=8 format=3 uid="uid://bi4ms6apcmi5r"]
+[gd_scene load_steps=33 format=3 uid="uid://bi4ms6apcmi5r"]
 
 [ext_resource type="Script" path="res://Menu.gd" id="1_kujs8"]
 [ext_resource type="FontFile" uid="uid://5348kmef3b1g" path="res://ressources/art/8-BIT WONDER.TTF" id="2_do3lk"]
 [ext_resource type="Texture2D" uid="uid://c3rqg3fiis62j" path="res://ressources/art/button.png" id="3_8c31f"]
 [ext_resource type="Texture2D" uid="uid://dimi6dux645sm" path="res://ressources/art/banner.png" id="4_ncj2k"]
 [ext_resource type="AudioStream" uid="uid://6qkyt1vcn8y1" path="res://ressources/sound/click.wav" id="6_nmx1n"]
+[ext_resource type="Texture2D" uid="uid://bqr13dnrfhxqa" path="res://ressources/art/image (21).png" id="6_xggwb"]
+[ext_resource type="Texture2D" uid="uid://ddfl260nbn32r" path="res://ressources/art/image (8).png" id="7_m2qmv"]
+[ext_resource type="Texture2D" uid="uid://cdy32r25jstp0" path="res://ressources/art/image (7).png" id="8_gyttv"]
+[ext_resource type="Texture2D" uid="uid://di55i071lujwc" path="res://ressources/art/image (25).png" id="9_dxnu4"]
+[ext_resource type="Texture2D" uid="uid://cfg33n1kr6ynx" path="res://ressources/art/image (14).png" id="9_ragko"]
+[ext_resource type="Texture2D" uid="uid://clwyccsl3nkaq" path="res://ressources/art/image (16).png" id="10_ni5i3"]
+[ext_resource type="Texture2D" uid="uid://dn62x3fd0a1ac" path="res://ressources/art/image (15).png" id="11_prtg4"]
+[ext_resource type="Texture2D" uid="uid://b0phywyccx766" path="res://ressources/art/image (2).png" id="12_r26w7"]
+[ext_resource type="Texture2D" uid="uid://dbkiuqo05l51j" path="res://ressources/art/shadow.png" id="13_02swi"]
+[ext_resource type="Texture2D" uid="uid://xyjy3b32ftyh" path="res://ressources/art/mouse_pointer.png" id="13_5i4c6"]
+[ext_resource type="Texture2D" uid="uid://babf4de00ixb0" path="res://ressources/art/skeleton_tmp.png" id="14_mp77t"]
+[ext_resource type="Texture2D" uid="uid://ohvl6lxv5n36" path="res://ressources/art/image (17).png" id="15_t2sjd"]
+[ext_resource type="Texture2D" uid="uid://e5j7cudpl5qk" path="res://ressources/art/maison_tmp.png" id="16_2xdsh"]
+[ext_resource type="Texture2D" uid="uid://mqw1muqmchky" path="res://ressources/art/necromancer.png" id="17_6h12h"]
+[ext_resource type="Texture2D" uid="uid://p1mkus02ofmi" path="res://ressources/art/maison_destroyed_tmp.png" id="18_nqidv"]
+[ext_resource type="Texture2D" uid="uid://be1n0n25fuug" path="res://ressources/art/image (24).png" id="19_ysq2e"]
+[ext_resource type="Texture2D" uid="uid://ckm16drvhrla4" path="res://ressources/art/image.png" id="20_871xa"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_36u17"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8rrka"]
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wdj6u"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gf7bm"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vlmbi"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_excxk"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wvcyn"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_g625h"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wua7w"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8j1c5"]
+
 [node name="Menu" type="Node2D"]
 script = ExtResource("1_kujs8")
+
+[node name="Sprite2D4" type="Sprite2D" parent="."]
+z_index = -2000
+position = Vector2(373, 414)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_8c31f")
+
+[node name="Button" type="Button" parent="Sprite2D4"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -186.0
+offset_top = -69.0
+offset_right = -6.0
+offset_bottom = -4.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_do3lk")
+theme_override_font_sizes/font_size = 15
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_36u17")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_8rrka")
+text = "how to play
+"
+flat = true
 
 [node name="Sprite2D2" type="Sprite2D" parent="."]
 z_index = -2000
@@ -46,4 +106,364 @@ texture = ExtResource("4_ncj2k")
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("6_nmx1n")
 
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Canvas" type="Sprite2D" parent="CanvasLayer"]
+position = Vector2(360, -240)
+texture = ExtResource("6_xggwb")
+
+[node name="Label" type="Label" parent="CanvasLayer/Canvas"]
+offset_left = -59.0
+offset_top = -131.0
+offset_right = 61.0
+offset_bottom = -108.0
+theme_override_fonts/font = ExtResource("2_do3lk")
+text = "Tutorial"
+
+[node name="Tuto3" type="Node2D" parent="CanvasLayer/Canvas"]
+position = Vector2(164, -18)
+
+[node name="Label7" type="Label" parent="CanvasLayer/Canvas/Tuto3"]
+offset_left = -325.0
+offset_top = 110.0
+offset_right = 65.0
+offset_bottom = 167.0
+theme_override_fonts/font = ExtResource("2_do3lk")
+theme_override_font_sizes/font_size = 7
+text = "moving unit to the indicator
+will send them east"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label3" type="Label" parent="CanvasLayer/Canvas/Tuto3"]
+offset_left = -326.0
+offset_top = -65.8
+offset_right = 64.0
+offset_bottom = -38.8
+theme_override_fonts/font = ExtResource("2_do3lk")
+theme_override_font_sizes/font_size = 12
+text = "move camera to
+the inquisition"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Sprite2D3" type="Sprite2D" parent="CanvasLayer/Canvas/Tuto3"]
+position = Vector2(-290, 10.2)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("7_m2qmv")
+
+[node name="Sprite2D5" type="Sprite2D" parent="CanvasLayer/Canvas/Tuto3"]
+position = Vector2(-276, 140)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("8_gyttv")
+
+[node name="Label6" type="Label" parent="CanvasLayer/Canvas/Tuto3/Sprite2D5"]
+offset_left = -238.0
+offset_top = -12.0
+offset_right = 152.0
+offset_bottom = 15.0
+theme_override_fonts/font = ExtResource("2_do3lk")
+theme_override_font_sizes/font_size = 12
+text = "20m"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Sprite2D2" type="Sprite2D" parent="CanvasLayer/Canvas/Tuto3"]
+position = Vector2(-288, -51.8)
+scale = Vector2(1.4, 1.4)
+texture = ExtResource("8_gyttv")
+
+[node name="Sprite2D4" type="Sprite2D" parent="CanvasLayer/Canvas/Tuto3"]
+position = Vector2(-290, 75)
+texture = ExtResource("9_dxnu4")
+
+[node name="Label4" type="Label" parent="CanvasLayer/Canvas/Tuto3"]
+offset_left = -327.0
+offset_top = -4.79999
+offset_right = 63.0
+offset_bottom = 22.2
+theme_override_fonts/font = ExtResource("2_do3lk")
+theme_override_font_sizes/font_size = 12
+text = "Select
+all skeletons"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label5" type="Label" parent="CanvasLayer/Canvas/Tuto3"]
+offset_left = -326.0
+offset_top = 63.2
+offset_right = 64.0
+offset_bottom = 90.2
+theme_override_fonts/font = ExtResource("2_do3lk")
+theme_override_font_sizes/font_size = 12
+text = "Select
+the necromancer"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Tuto2" type="Node2D" parent="CanvasLayer/Canvas"]
+
+[node name="Label7" type="Label" parent="CanvasLayer/Canvas/Tuto2"]
+offset_left = -198.0
+offset_top = 119.0
+offset_right = 192.0
+offset_bottom = 146.0
+theme_override_fonts/font = ExtResource("2_do3lk")
+theme_override_font_sizes/font_size = 12
+text = "Cast spell with Q W And E"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Polygon2D" type="Polygon2D" parent="CanvasLayer/Canvas/Tuto2/Label7"]
+polygon = PackedVector2Array(239, 17, 242, 21, 244, 19, 243, 17, 243, 17)
+
+[node name="Label6" type="Label" parent="CanvasLayer/Canvas/Tuto2"]
+offset_left = -224.0
+offset_top = 46.5
+offset_right = 418.0
+offset_bottom = 73.5
+theme_override_fonts/font = ExtResource("2_do3lk")
+theme_override_font_sizes/font_size = 12
+text = "Summon without
+necromancer presence"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label3" type="Label" parent="CanvasLayer/Canvas/Tuto2"]
+offset_left = -230.0
+offset_top = -17.5
+offset_right = 412.0
+offset_bottom = 9.5
+theme_override_fonts/font = ExtResource("2_do3lk")
+theme_override_font_sizes/font_size = 12
+text = "Teleport units
+after 4 seconds"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label5" type="Label" parent="CanvasLayer/Canvas/Tuto2"]
+offset_left = -228.0
+offset_top = -83.5
+offset_right = 414.0
+offset_bottom = -56.5
+theme_override_fonts/font = ExtResource("2_do3lk")
+theme_override_font_sizes/font_size = 12
+text = " Damage buildings"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label" type="Label" parent="CanvasLayer/Canvas/Tuto2"]
+offset_left = -307.0
+offset_top = -83.5
+offset_right = 83.0
+offset_bottom = -56.5
+theme_override_fonts/font = ExtResource("2_do3lk")
+theme_override_font_sizes/font_size = 12
+text = "Fireball "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label4" type="Label" parent="CanvasLayer/Canvas/Tuto2"]
+offset_left = -428.0
+offset_top = 49.5
+offset_right = 214.0
+offset_bottom = 76.5
+theme_override_fonts/font = ExtResource("2_do3lk")
+theme_override_font_sizes/font_size = 12
+text = "Summoning"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="CanvasLayer/Canvas/Tuto2"]
+offset_left = -434.0
+offset_top = -17.5
+offset_right = 208.0
+offset_bottom = 9.5
+theme_override_fonts/font = ExtResource("2_do3lk")
+theme_override_font_sizes/font_size = 12
+text = "Teleport "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Sprite2D5" type="Sprite2D" parent="CanvasLayer/Canvas/Tuto2"]
+position = Vector2(-184, -70.5)
+texture = ExtResource("9_ragko")
+
+[node name="Sprite2D4" type="Sprite2D" parent="CanvasLayer/Canvas/Tuto2"]
+position = Vector2(-184, -3.5)
+texture = ExtResource("10_ni5i3")
+
+[node name="Sprite2D3" type="Sprite2D" parent="CanvasLayer/Canvas/Tuto2"]
+position = Vector2(-184, 63.5)
+texture = ExtResource("11_prtg4")
+
+[node name="Tuto1" type="Node2D" parent="CanvasLayer/Canvas"]
+position = Vector2(186, -35)
+metadata/_edit_group_ = true
+
+[node name="Label4" type="Label" parent="CanvasLayer/Canvas/Tuto1"]
+offset_left = -378.0
+offset_top = -61.0
+offset_right = 12.0
+offset_bottom = -34.0
+theme_override_fonts/font = ExtResource("2_do3lk")
+theme_override_font_sizes/font_size = 12
+text = "Left click to select
+Right click to move"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label3" type="Label" parent="CanvasLayer/Canvas/Tuto1"]
+offset_left = -378.0
+offset_top = 153.0
+offset_right = 12.0
+offset_bottom = 180.0
+theme_override_fonts/font = ExtResource("2_do3lk")
+theme_override_font_sizes/font_size = 12
+text = "Space to select the necromancer
+A and D to move camera"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="CanvasLayer/Canvas/Tuto1"]
+offset_left = -249.0
+offset_top = 96.0
+offset_right = 141.0
+offset_bottom = 123.0
+theme_override_fonts/font = ExtResource("2_do3lk")
+theme_override_font_sizes/font_size = 12
+text = "Send necromancer
+To destroyed houses
+to spawn skeletons"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label" type="Label" parent="CanvasLayer/Canvas/Tuto1"]
+offset_left = -517.0
+offset_top = 95.0
+offset_right = -127.0
+offset_bottom = 122.0
+theme_override_fonts/font = ExtResource("2_do3lk")
+theme_override_font_sizes/font_size = 12
+text = "Destroy houses
+by sending skeletons"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Polygon2D" type="Polygon2D" parent="CanvasLayer/Canvas/Tuto1"]
+position = Vector2(-320.841, 49.8729)
+scale = Vector2(0.939159, 0.675759)
+color = Color(0.337255, 0.352941, 0.529412, 1)
+polygon = PackedVector2Array(-96, -96, -96, 56, 96, 56, 96, -96)
+
+[node name="Sprite2D11" type="Sprite2D" parent="CanvasLayer/Canvas/Tuto1"]
+position = Vector2(-246, 62)
+scale = Vector2(0.005, 0.005)
+texture = ExtResource("13_5i4c6")
+
+[node name="Sprite2D5" type="Sprite2D" parent="CanvasLayer/Canvas/Tuto1"]
+position = Vector2(-302.841, 35.8729)
+scale = Vector2(0.44, 0.44)
+texture = ExtResource("12_r26w7")
+
+[node name="Sprite2D4" type="Sprite2D" parent="CanvasLayer/Canvas/Tuto1"]
+position = Vector2(-264.841, 53.8729)
+texture = ExtResource("13_02swi")
+
+[node name="Sprite2D3" type="Sprite2D" parent="CanvasLayer/Canvas/Tuto1"]
+position = Vector2(-264.841, 37.8729)
+texture = ExtResource("14_mp77t")
+flip_h = true
+
+[node name="Sprite2D2" type="Sprite2D" parent="CanvasLayer/Canvas/Tuto1"]
+position = Vector2(-364.341, 58.8729)
+texture = ExtResource("15_t2sjd")
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/Canvas/Tuto1"]
+position = Vector2(-364.341, 27.8729)
+texture = ExtResource("16_2xdsh")
+
+[node name="Polygon2D2" type="Polygon2D" parent="CanvasLayer/Canvas/Tuto1"]
+position = Vector2(-48.8407, 49.8729)
+scale = Vector2(0.939159, 0.675759)
+color = Color(0.337255, 0.352941, 0.529412, 1)
+polygon = PackedVector2Array(-96, -96, -96, 56, 96, 56, 96, -96)
+
+[node name="Sprite2D6" type="Sprite2D" parent="CanvasLayer/Canvas/Tuto1"]
+position = Vector2(-30.8407, 35.8729)
+scale = Vector2(0.44, 0.44)
+texture = ExtResource("12_r26w7")
+
+[node name="Sprite2D7" type="Sprite2D" parent="CanvasLayer/Canvas/Tuto1"]
+position = Vector2(7.1593, 53.8729)
+texture = ExtResource("13_02swi")
+
+[node name="Sprite2D8" type="Sprite2D" parent="CanvasLayer/Canvas/Tuto1"]
+position = Vector2(7.1593, 37.8729)
+texture = ExtResource("17_6h12h")
+flip_h = true
+hframes = 4
+
+[node name="Sprite2D9" type="Sprite2D" parent="CanvasLayer/Canvas/Tuto1"]
+position = Vector2(-92.3407, 58.8729)
+texture = ExtResource("15_t2sjd")
+
+[node name="Sprite2D10" type="Sprite2D" parent="CanvasLayer/Canvas/Tuto1"]
+position = Vector2(-92.3407, 27.8729)
+texture = ExtResource("18_nqidv")
+
+[node name="Sprite2D12" type="Sprite2D" parent="CanvasLayer/Canvas/Tuto1"]
+position = Vector2(27, 63)
+scale = Vector2(0.005, 0.005)
+texture = ExtResource("13_5i4c6")
+
+[node name="Next3" type="Sprite2D" parent="CanvasLayer/Canvas"]
+position = Vector2(243, -121)
+texture = ExtResource("19_ysq2e")
+
+[node name="Button" type="Button" parent="CanvasLayer/Canvas/Next3"]
+offset_left = -10.0
+offset_top = -13.0
+offset_right = 14.0
+offset_bottom = 11.0
+theme_override_fonts/font = ExtResource("2_do3lk")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_wdj6u")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_gf7bm")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_vlmbi")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_excxk")
+text = "X
+"
+
+[node name="Next2" type="Sprite2D" parent="CanvasLayer/Canvas"]
+position = Vector2(-229, 132)
+texture = ExtResource("12_r26w7")
+
+[node name="Button" type="Button" parent="CanvasLayer/Canvas/Next2"]
+offset_left = -25.0
+offset_top = -25.0
+offset_right = 25.0
+offset_bottom = 25.0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_wvcyn")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_g625h")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_wua7w")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_8j1c5")
+
+[node name="Next" type="Sprite2D" parent="CanvasLayer/Canvas"]
+position = Vector2(231, 132)
+texture = ExtResource("20_871xa")
+
+[node name="Button" type="Button" parent="CanvasLayer/Canvas/Next"]
+offset_left = -25.0
+offset_top = -25.0
+offset_right = 25.0
+offset_bottom = 25.0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_wvcyn")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_g625h")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_wua7w")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_8j1c5")
+
+[connection signal="pressed" from="Sprite2D4/Button" to="." method="_on_button_pressed_tutoriel"]
 [connection signal="pressed" from="Sprite2D2/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/Canvas/Next3/Button" to="." method="_on_button_pressed_tutoriel_x"]
+[connection signal="pressed" from="CanvasLayer/Canvas/Next2/Button" to="." method="_on_button_pressed1"]
+[connection signal="pressed" from="CanvasLayer/Canvas/Next/Button" to="." method="_on_button_pressed2"]
